@@ -61,9 +61,7 @@ Proof.
   use (vec_ind (λ n v, ∏ rels0 : hvec (vec_map hrel v),
     hvec (h1map_vec (λ a : UU, setquot) rels0) →
     setquot (hrelhvec v rels0))).
-  - (*This bullet is just trivialities on [[unit]]
-    TODO: move in MoreFoundations*)
-    intros rels c.
+  - intros rels c.
     cbn.
     exact unittrivialrel_setquot.
   - intros x n' v' IH rels c.
