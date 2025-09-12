@@ -36,7 +36,7 @@ Section TermAlgebra.
   Proof.
     red.
     intros.
-    unfold starfun.
+    unfold smap.
     apply gevalstep.
   Defined.
 
@@ -58,7 +58,7 @@ Section TermAlgebra.
     rewrite fishom.
     rewrite gevalstep.
     apply maponpaths.
-    unfold starfun.
+    unfold smap.
     apply h1map_path.
     exact IH.
   Qed.

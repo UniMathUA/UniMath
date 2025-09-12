@@ -23,7 +23,7 @@ Section FreeAlgebras.
   Definition eval: free_algebra σ V s→ a := fromterm (ops a) α.
 
   Lemma evalstep (nm: names σ) (v:  (term σ V)⋆ (arity nm))
-    : eval (sort nm) (build_term nm v) = ops a nm (eval⋆⋆ (arity nm) v).
+    : eval (sort nm) (build_term nm v) = ops a nm (smap eval (arity nm) v).
   Proof.
     unfold eval.
     change (sort nm) with (sort nm).
@@ -74,7 +74,7 @@ Section FreeAlgebras.
       refine (list_ind _ _ _).
       -- reflexivity.
       -- intros x xs IHxs hv IHhv.
-         unfold starfun.
+         unfold smap.
            simpl.
            simpl in IHhv.
            apply hcons_paths.

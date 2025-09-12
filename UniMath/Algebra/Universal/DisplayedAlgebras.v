@@ -172,7 +172,7 @@ Section weqHomDispAlg.
         unfold total_fibers_sfun.
         simpl.
         use maponpaths.
-        unfold starfun.
+        unfold smap.
         unfold total_alg, dom, star in xs.
         simpl in xs.
         use h2map_transport_h1mapcompose.

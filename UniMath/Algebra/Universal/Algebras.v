@@ -90,7 +90,7 @@ Defined.
 (** ** Homomorphisms of algebras. *)
 
 Definition ishom {σ: signature} {A1 A2: algebra σ} (h: A1 s→ A2) : UU
-  := ∏ (nm: names σ) (x: dom A1 nm), h _ (ops A1 nm x) = ops A2 nm (h⋆⋆ _ x).
+  := ∏ (nm: names σ) (x: dom A1 nm), h _ (ops A1 nm x) = ops A2 nm (smap h _ x).
 
 Definition hom {σ: signature} (A1 A2: algebra σ): UU := ∑ (h: A1 s→ A2), ishom h.
 

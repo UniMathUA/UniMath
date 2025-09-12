@@ -63,7 +63,7 @@ Section VTerms.
                      (op : (∏ nm : names σ, A⋆ (arity nm) → A (sort nm)))
                      (α : assignment A V)
                      (nm: names σ) (v: (term σ V)⋆ (arity nm))
-    : fromterm op α (sort nm) (build_term nm v) = op nm ((fromterm op α)⋆⋆ (arity nm) v).
+    : fromterm op α (sort nm) (build_term nm v) = op nm (smap (fromterm op α) (arity nm) v).
   Proof.
     unfold fromterm, fromgterm, build_term.
     rewrite (term_ind_step _ _  (namelift V nm)).

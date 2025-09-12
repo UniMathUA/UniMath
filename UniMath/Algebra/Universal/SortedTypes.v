@@ -1,9 +1,9 @@
 (** * Sorted types. *)
 (** Gianluca Amato,  Marco Maggesi, Cosimo Perini Brogi 2019-2023 *)
 (*
-This file contains a formalization of _sorted types_, i.e. types indexed by elements of another
-type, called _index type_. Notation and terminologies are inspired by Wolfgang Wechler,
-_Universal Algebra for Computer Scientist_, Springer.
+This file contains a fordex type_. Notation and terminologies are inspired by Wolfgang Wechler,
+_Universal Algebra fmalization of _sorted types_, i.e. types indexed by elements of another
+type, called _inor Computer Scientist_, Springer.
 *)
 
 Require Import UniMath.Foundations.All.
@@ -90,27 +90,26 @@ Bind Scope hvec_scope with star.
 
 Notation "A ⋆" := (star A) (at level 3, format "'[ ' A '⋆' ']'"): sorted_scope.
 
-(** If [f] is an indexed mapping between [S]-indexed types [X] and [Y], then [starfun X] is the lifting of
-[f] to a [list S]-indexed mapping between [list S]-indexed sets [star X] and [star Y].
+(** If [f] is an indexed mapping between [S]-indexed types [X] and [Y], then [smap X] is the lifting of
+[f] to a [list S]-indexed mapping between [list S]-indexed sets [star X] and [star Y]. It is the indexed
+versiono of [map].
 *)
 
-Definition starfun {S: UU} {X Y: sUU S} (f: sfun X Y) : sfun X⋆ Y⋆ := λ s: list S, h1map f.
-
-Notation "f ⋆⋆" := (starfun f) (at level 3, format "'[ ' f '⋆⋆' ']'"): sorted_scope.
+Definition smap {S: UU} {X Y: sUU S} (f: sfun X Y) : sfun X⋆ Y⋆ := λ s: list S, h1map f.
 
 (** Here follows the proof that [starfun] is functorial. Compositionality w.r.t. [s∘] is presented as
 [(f s∘ g)⋆⋆ _ x = f⋆⋆ _ (g⋆⋆ _ x)] instead of [(f s∘ g)⋆⋆ = (f⋆⋆) s∘ (g⋆⋆ )] since the former
 does not require function extensionality. *)
 
-Lemma staridfun {S: UU} {X: sUU S} (l: list S) (x: X⋆ l): (idsfun X)⋆⋆ _ x = idsfun X⋆ _ x.
+Lemma staridfun {S: UU} {X: sUU S} (l: list S) (x: X⋆ l): smap (idsfun X) _ x = idsfun X⋆ _ x.
 Proof.
   apply h1map_idfun.
 Defined.
 
 Lemma starcomp {S: UU} {X Y Z: sUU S} (f: Y s→ Z) (g: X s→ Y) (l: list S) (x: X⋆ l)
-  : (f s∘ g)⋆⋆ _ x = f⋆⋆ _ (g⋆⋆ _ x).
+  : smap (f s∘ g) _ x = (smap f) _ (smap g _ x).
 Proof.
-  unfold starfun.
+  unfold smap.
   apply pathsinv0.
   apply h1map_compose.
 Defined.
@@ -145,7 +144,7 @@ Lemma hvec_of_shfiber {S : UU} {A B : sUU S}
 {h : A s→ B} {l : list S}
 (bs : hvec (vec_map B l))
 (xs : hvec (h1map_vec (shfiber h) bs))
-: (h ⋆⋆)%sorted l (h2lower (h2map (λ (s:S) (b : B s), pr1) xs)) = bs.
+: (smap h) l (h2lower (h2map (λ (s:S) (b : B s), pr1) xs)) = bs.
 Proof.
   use hvec_ofpaths.
 Defined.
@@ -156,7 +155,7 @@ Theorem squash_simage
         (ss : list S)
         (ys : (simage_shsubtype f)⋆ ss)
   {Q:UU} (isQ : isaprop Q) :
-  (hvec (h1lower ((shfiber f)⋆⋆ ss (h1map (λ s, pr1) ys))) → Q)
+  (hvec (h1lower (smap (shfiber f) ss (h1map (λ s, pr1) ys))) → Q)
   → Q.
 Proof.
   revert ss ys.

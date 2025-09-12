@@ -37,8 +37,8 @@ Definition make_signature (S: decSet) (O: hSet) (ar: O → list S × S) : signat
 Definition make_signature_single_sorted (O: hSet) (ar: O → nat) : signature
   := make_signature (unit,, isdecequnit) O (λ op, fill tt (ar op) ,, tt).
 
-(** A signature may be alternatively specified trough a [signature_simple]. In a simple
-signature, the types for sorts and operation symbols are standard finite sets, and
+(** A signature may be alternatively specified trough a _simple signature_ ([signature_simple]).
+In a simple signature, the types for sorts and operation symbols are standard finite sets, and
 the map from operations symbols to domain and range is replaced by a list. In this way,
 the definition of a new signature is made simpler.
 
@@ -54,6 +54,9 @@ Definition make_signature_simple {ns: nat} (ar: list (list (⟦ ns ⟧) × ⟦ n
 
 Coercion signature_simple_compile (σ: signature_simple) : signature
   := make_signature (⟦ pr1 σ ⟧ ,, isdeceqstn _) (stnset (length (pr2 σ))) (nth (pr2 σ)).
+
+  (** A [signature_simple_single_sorted] is a simple single-sorted signature. It is essentially
+  a list of natural number, each element giving the aritiy of an operation. *)
 
 Definition signature_simple_single_sorted : UU := list nat.
 

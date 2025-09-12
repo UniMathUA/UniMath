@@ -59,7 +59,7 @@ Section SubUniverse.
 
 Definition issubuniverse {σ : signature} (A : algebra σ) (B : shsubtype A): UU
   := ∏(nm : names σ) (xs : B⋆ (arity nm)),
-    B (sort nm) (ops A nm ((λ s, pr1carrier (B s))⋆⋆ (arity nm) xs)).
+    B (sort nm) (ops A nm (smap (λ s, pr1carrier (B s)) (arity nm) xs)).
 
 Definition isapropissubuniverse {σ : signature} (A : algebra σ) (B : shsubtype A)
   : isaprop (issubuniverse A B).

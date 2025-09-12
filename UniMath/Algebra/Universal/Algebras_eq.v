@@ -47,7 +47,7 @@ Proof.
     eapply pathscomp0.
     { use (pr2 h). }
     use maponpaths.
-    unfold starfun.
+    unfold smap.
     eapply pathscomp0.
     { use h1map_compose. }
     simpl.
