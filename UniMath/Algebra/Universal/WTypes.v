@@ -368,7 +368,7 @@ Section groundTermAlgebraWtype.
         use weqonsecfibers.
         intro i.
         use eqweqmap.
-        use hel_h1map_vec_vec_fill.
+        use el_h1map_vec_vec_fill.
       Defined.
 
       Theorem ind_HP_Th : P (sort nm) (build_gterm nm v) ≃ lowP (sup nm f).
@@ -509,7 +509,7 @@ Section groundTermAlgebraWtype.
         use pathsweq1'.
         unfold ind_HP_Hypo.
         rewrite invmap_weqcomp_expand.
-        rewrite inv_helf_weq.
+        rewrite inv_helf_weq.  (* this is actually an idpath *)
         rewrite inv_weqonsecfibers.
         unfold funcomp.
         rewrite termInd_ind.
@@ -571,4 +571,3 @@ Section groundTermAlgebraWtype.
   Defined.
 
 End groundTermAlgebraWtype.
-

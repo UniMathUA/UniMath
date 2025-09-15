@@ -111,7 +111,7 @@ Lemma starcomp {S: UU} {X Y Z: sUU S} (f: Y s→ Z) (g: X s→ Y) (l: list S) (x
 Proof.
   unfold smap.
   apply pathsinv0.
-  apply h1map_compose.
+  apply h1map_h1map.
 Defined.
 
 (*indexed hsubtypes*)

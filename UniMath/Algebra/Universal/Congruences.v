@@ -55,7 +55,6 @@ Coercion eqrelofcong : congruence >-> Funclass.
 Definition quotalgebra {σ : signature} (A : algebra σ) (R : congruence A)
   : algebra σ.
 Proof.
-Proof.
   use make_algebra.
   - intro s.
     exact (setquot (eqrelofcong R s)).
@@ -76,9 +75,9 @@ Proof.
       use hvectosetquot.
       unfold star in xs.
       refine (eqweqmap (maponpaths hvec _) xs).
-      eapply pathscomp0. { use h01maph1lower.  }
-      eapply pathscomp0. { use h1lower_vec_map_comp. exact (support A). }
+      eapply pathscomp0. { apply pathsinv0. use h1lower_h01map.  }
+      eapply pathscomp0. { apply pathsinv0. refine (h1lower_transport_vec_map_comp _ _). exact (support A). }
       use maponpaths.
-      use pathsinv0.
+      apply pathsinv0.
       use h1h01map_transport_vec_map_comp.
 Defined.

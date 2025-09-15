@@ -38,7 +38,7 @@ Section Definitions.
       use tpair.
       + exact (ops A nm (h1map (λ s, pr1) xs)).
       + use overops. (*TODO: can we define this without transport and/or a new "map" variant ?*)
-        use (transportb (λ arg, hvec (h1lower arg)) (h1map_compose (λ s, pr1) (fib D) xs)).
+        use (transportb (λ arg, hvec (h1lower arg)) (h1map_h1map (λ s, pr1) (fib D) xs)).
         use (h12map (λ s, pr2) xs).
   Defined.
 

@@ -147,7 +147,7 @@ Proof.
         { use embedding_ishom. }
         use maponpaths.
         use pathsinv0.
-        use h1map_compose.
+        use h1map_h1map.
   - intro s.
     use isweqinclandsurj.
       * use isinclprtoimage.

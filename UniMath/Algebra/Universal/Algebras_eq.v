@@ -49,7 +49,7 @@ Proof.
     use maponpaths.
     unfold smap.
     eapply pathscomp0.
-    { use h1map_compose. }
+    { use h1map_h1map. }
     simpl.
     eapply pathscomp0.
     2 :{ use h1map_idfun. }
