@@ -1,4 +1,11 @@
-[![DOI](https://zenodo.org/badge/17321421.svg)](https://zenodo.org/badge/latestdoi/17321421)
+---
+This is an experimental branch of UniMath with the original implementation of *displayed algebras*, now merged in the main branch.
+
+This work is partially supported by PNRR Mission 4, line 1.3, funded by the European Union – NEXTGENERATIONEU, “Future Artificial Intelligence – FAIR” project - PE0000013,
+Spoke 9, CUP D23C24000220006.
+
+---
+
 
 # Univalent Mathematics
 
